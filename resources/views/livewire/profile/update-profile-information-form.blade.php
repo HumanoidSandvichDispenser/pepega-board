@@ -10,7 +10,8 @@ use Livewire\Volt\Component;
 
 new class extends Component
 {
-    public string $name = '';
+    public string $display_name = '';
+    public string $username = '';
     public string $email = '';
 
     /**
@@ -18,7 +19,8 @@ new class extends Component
      */
     public function mount(): void
     {
-        $this->name = Auth::user()->name;
+        $this->display_name = Auth::user()->display_name;
+        $this->username = Auth::user()->username;
         $this->email = Auth::user()->email;
     }
 
@@ -30,7 +32,7 @@ new class extends Component
         $user = Auth::user();
 
         $validated = $this->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'display_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
         ]);
 
@@ -79,9 +81,9 @@ new class extends Component
 
     <form wire:submit="updateProfileInformation" class="mt-6 space-y-6">
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input wire:model="name" id="name" name="name" type="text" class="mt-1 block w-full" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+            <x-input-label for="display_name" :value="__('Display Name')" />
+            <x-text-input wire:model="display_name" id="display_name" name="display_name" type="text" class="mt-1 block w-full" required autofocus autocomplete="display_name" />
+            <x-input-error class="mt-2" :messages="$errors->get('display_name')" />
         </div>
 
         <div>

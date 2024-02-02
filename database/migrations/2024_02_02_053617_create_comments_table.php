@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->string('content');
-            $table->foreignId('thread_id')->references('id')->on('threads');
-            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('thread_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }
