@@ -11,6 +11,8 @@ $is_user_involved = false;
 
 if ($thread != null) {
     $is_user_involved = $thread->users->find(Auth::id());
+    // mark as read
+    $thread->users()->updateExistingPivot($user->id, ['has_read' => true]);
 }
 ?>
 

@@ -6,10 +6,18 @@ use Illuminate\Support\Facades\Auth;
 $id = request()->route('id');
 $post = Post::find($id);
 $user = Auth::user();
-$is_you = $post->user->id == $user->id;
-$thread = $post->threads()->whereHas('users', function ($query) use ($user) {
+
+$findUser = function ($query) use ($user) {
     $query->where('user_id', $user->id);
-})->first();
+};
+
+$is_you = false;
+$thread = null;
+if ($user != null) {
+    $is_you = $post->user->id == $user->id;
+    $thread = $post->threads()->whereHas('users', $findUser)->first();
+}
+
 ?>
 
 <x-app-layout>
@@ -20,32 +28,39 @@ $thread = $post->threads()->whereHas('users', function ($query) use ($user) {
     </x-slot>
     <div>
         @if ($post != null)
-        <livewire:home.post-card :post="$post">
-        </livewire:home.post-card>
+            <livewire:home.post-card :post="$post">
+            </livewire:home.post-card>
 
-        @if ($is_you)
-        <!-- display all threads/responses -->
-        @foreach ($post->threads as $thread)
-        <livewire:comment-card
-            :comment="$thread->comments->first()"
-            with_reply_button
-        />
-        @endforeach
-        @elseif ($thread != null)
-        <livewire:comment-card
-            :comment="$thread->comments->first()"
-            with_reply_button
-        />
-        @else
-        <div>
-            <livewire:viewpost.reply-form
-                :target_post="$post"
-            />
-        </div>
-        @endif
-
+            @auth
+                @if ($is_you)
+                    <!-- display all threads/responses -->
+                    @foreach ($post->threads as $thread)
+                        <livewire:comment-card
+                            :comment="$thread->comments->first()"
+                            with_reply_button
+                        />
+                    @endforeach
+                @elseif ($thread != null)
+                    <livewire:comment-card
+                        :comment="$thread->comments->first()"
+                        with_reply_button
+                    />
+                @else
+                    <div>
+                        <livewire:viewpost.reply-form
+                            :target_post="$post"
+                        />
+                    </div>
+                @endif
+            @endauth
         @else
             The post you requested has been deleted or does not exist. Idiota
         @endif
+        @guest
+        <div class="tw-m-4">
+            <a href="/login">Log in</a> or <a href="/register">register</a>
+            to respond.
+        </div>
+        @endguest
     </div>
 </x-app-layout>

@@ -51,6 +51,17 @@ class ReplyForm extends Component
                 $thread->users()->updateExistingPivot(
                     $user->id, ['is_anonymous' => false]);
             }
+
+            $users = $thread->users();
+            $users->updateExistingPivot(
+                $user->id, ['has_read' => true]);
+
+            foreach ($thread->users as $participant) {
+                if ($participant->id != $user->id) {
+                    $users->updateExistingPivot(
+                        $participant->id, ['has_read' => false]);
+                }
+            }
         }
 
         // successfully created thread, now add the comment
