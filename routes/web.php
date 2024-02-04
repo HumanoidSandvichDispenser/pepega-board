@@ -19,7 +19,7 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::view('home', 'home')
+Route::view('/', 'home')
     ->name('home');
 
 Route::view('/post/{id}', 'viewpost')

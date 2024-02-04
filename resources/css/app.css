@@ -5,14 +5,21 @@
 @tailwind utilities;
 
 :root {
+    /*
     --fg0: #334455;
     --fg1: #708191;
     --bg0: #ffffff;
     --bg1: #efefef;
     --bg2: #bbbab9;
-    --red: #e16f7c;
-    --green: #646cff;
-    --magenta: #646cff;
+*/
+    --bg0: #1e2030;
+    --bg1: #24273a;
+    --bg2: #363a4f;
+    --fg0: #cad3f5;
+    --fg1: #a5adcb;
+    --red: #ed8796;
+    --green: #a6da95;
+    --magenta: #c6a0f6;
     --accent: var(--green);
 
     --sans-serif: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -23,7 +30,7 @@
 
     color-scheme: light dark;
     color: var(--fg0);
-    background-color: var(--bg1);
+    background-color: var(--bg0);
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -34,11 +41,20 @@
 
 a {
     font-weight: 500;
-    color: #646cff;
+    color: var(--accent);
     text-decoration: inherit;
 }
+
 a:hover {
-    color: #535bf2;
+    color: var(--accent);
+}
+
+a.color-inherit {
+    color: inherit;
+}
+
+a.color-inherit:hover {
+    color: inherit;
 }
 
 html,
@@ -61,15 +77,16 @@ h1 {
 
 button {
     border-radius: 8px;
-    border: 1px solid var(--bg2);
+    border: 1px solid var(--bg1);
     padding: 0.8em 2.4em;
     font-size: 0.8em;
     font-weight: 500;
     font-family: inherit;
-    background-color: var(--bg0);
+    background-color: var(--bg2);
     cursor: pointer;
     transition: border-color 0.25s;
     text-transform: uppercase;
+    color: var(--fg0);
 }
 
 button:hover {
@@ -82,8 +99,14 @@ button:focus-visible {
 }
 
 button.accent {
-    background-color: var(--fg0);
+    background-color: var(--accent);
+    transition: background-color 0.25s;
     color: var(--bg0);
+}
+
+button.accent:hover {
+    border-color: unset;
+    background-color: var(--fg0);
 }
 
 button.accent.danger {
@@ -93,16 +116,19 @@ button.accent.danger {
 input,
 textarea {
     border-radius: 8px;
-    border: 1px solid var(--bg2);
+    border: 1px solid var(--bg1);
     padding: 0.6em 1.2em;
     font-size: 1em;
     box-sizing: border-box;
     font-family: var(--sans-serif);
+    background-color: var(--bg2);
+    color: var(--fg0);
 }
 
 input:hover,
 input:focus {
     border-color: var(--accent);
+    outline: none;
 }
 
 textarea {
@@ -128,6 +154,7 @@ header#top-header {
 }
 
 header#top-header h2 {
+    display: inline;
     margin: 0;
 }
 

@@ -21,11 +21,38 @@
             <!-- Page Heading -->
             @if (isset($header))
                 <header id="top-header">
-                    <div>
-                        <h2 class="tw-font-normal">Pepegaboard</h2>
-                    </div>
-                    <div>
-                        {{ $header }}
+                    <div class="tw-flex tw-w-full">
+                        <span class="tw-grow tw-float-left">
+                            <span>
+                                <h2 class="tw-font-normal">
+                                    <a href="/" class="color-inherit">
+                                        Pepegaboard
+                                    </a>
+                                </h2>
+                            </span>
+                            <span>
+                                {{ $header }}
+                            </span>
+                        </span>
+                        <span class="tw-grow tw-float-right tw-text-right">
+                            @guest
+                                <a href="/login">
+                                    <button class="link">
+                                        Login
+                                    </button>
+                                </a>
+                                <a href="/register">
+                                    <button class="link accent">
+                                        Register
+                                    </button>
+                                </a>
+                            @endguest
+                            @auth
+                                <a class="tw-text-inherit" href="/profile">
+                                    {{ Auth::user()->display_name }}
+                                </a>
+                            @endauth
+                        </span>
                     </div>
                 </header>
             @endif

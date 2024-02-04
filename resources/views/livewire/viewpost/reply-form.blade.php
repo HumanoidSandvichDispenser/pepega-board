@@ -2,7 +2,7 @@
     <form wire:submit="submitReply">
         <textarea
             wire:model="form.content"
-            placeholder="Text (maximum 4095 characters)"
+            placeholder="Reply (maximum 4095 characters)"
             name="content"
         >
         </textarea>

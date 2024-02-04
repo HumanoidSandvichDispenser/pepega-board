@@ -23,7 +23,7 @@ new class extends Component
         Auth::user()->posts()->create($this->form->all());
 
         //$this->dispatch('post-created');
-        return $this->redirect('/home');
+        return $this->redirect('/');
     }
 }
 ?>

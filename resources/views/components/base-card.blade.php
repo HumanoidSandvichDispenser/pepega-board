@@ -25,10 +25,10 @@
     display: flex;
     flex-direction: column;
     row-gap: 8px;
-    background-color: var(--bg0);
+    background-color: var(--bg2);
     padding: 16px;
     border-radius: 8px;
-    border: 1px solid var(--bg2);
+    border: 1px solid var(--bg1);
 }
 
 .card-inner {
