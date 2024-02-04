@@ -1,3 +1,155 @@
+/*
 @tailwind base;
+*/
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --fg0: #334455;
+    --fg1: #708191;
+    --bg0: #ffffff;
+    --bg1: #efefef;
+    --bg2: #bbbab9;
+    --red: #e16f7c;
+    --green: #646cff;
+    --magenta: #646cff;
+    --accent: var(--green);
+
+    --sans-serif: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: var(--sans-serif);
+
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    color: var(--fg0);
+    background-color: var(--bg1);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+a {
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit;
+}
+a:hover {
+    color: #535bf2;
+}
+
+html,
+body,
+#app {
+    height: 100%;
+}
+
+body {
+    top: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 320px;
+}
+
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+}
+
+button {
+    border-radius: 8px;
+    border: 1px solid var(--bg2);
+    padding: 0.8em 2.4em;
+    font-size: 0.8em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: var(--bg0);
+    cursor: pointer;
+    transition: border-color 0.25s;
+    text-transform: uppercase;
+}
+
+button:hover {
+    border-color: var(--accent);
+}
+
+button:focus,
+button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+
+button.accent {
+    background-color: var(--fg0);
+    color: var(--bg0);
+}
+
+button.accent.danger {
+    background-color: var(--red);
+}
+
+input,
+textarea {
+    border-radius: 8px;
+    border: 1px solid var(--bg2);
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    box-sizing: border-box;
+    font-family: var(--sans-serif);
+}
+
+input:hover,
+input:focus {
+    border-color: var(--accent);
+}
+
+textarea {
+    width: 100%;
+    height: 256px;
+}
+
+.card {
+    padding: 2em;
+}
+
+main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header#top-header {
+    display: flex;
+    gap: 1rem;
+    padding: 16px;
+    /*background-color: var(--bg0);*/
+}
+
+header#top-header h2 {
+    margin: 0;
+}
+
+label {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+form > div.spaced {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    background-color: var(--bg0);
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--bg2);
+}
+

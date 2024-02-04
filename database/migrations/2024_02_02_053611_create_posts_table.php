@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('content');
+            $table->boolean('is_anonymous');
+            $table->string('anonym')->nullable();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });

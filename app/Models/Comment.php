@@ -14,6 +14,11 @@ class Comment extends Model
         'content',
     ];
 
+    public function getIsAnonymousAttribute(): bool
+    {
+        return $this->thread->isUserAnonymous($this->user);
+    }
+
     public function thread(): BelongsTo
     {
         return $this->belongsTo(Thread::class);

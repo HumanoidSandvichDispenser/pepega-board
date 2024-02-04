@@ -24,6 +24,18 @@ class Thread extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot(['is_anonymous']);
+    }
+
+    public function isUserAnonymous(User $user)
+    {
+        return $this->users->find($user)->pivot->is_anonymous;
+    }
+
+    public function hasUserCommented(User $user)
+    {
+        return !$this->comments
+            ->where('user_id', $user->id)
+            ->isEmpty();
     }
 }

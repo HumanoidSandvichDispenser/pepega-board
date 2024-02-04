@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('thread_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->boolean('has_read');
-            $table->timestamps();
+            $table->boolean('is_anonymous');
         });
     }
 
