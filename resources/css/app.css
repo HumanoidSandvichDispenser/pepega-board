@@ -142,14 +142,3 @@ form > div.spaced {
     flex-direction: column;
     gap: 8px;
 }
-
-.card {
-    display: flex;
-    flex-direction: column;
-    row-gap: 8px;
-    background-color: var(--bg0);
-    padding: 16px;
-    border-radius: 8px;
-    border: 1px solid var(--bg2);
-}
-

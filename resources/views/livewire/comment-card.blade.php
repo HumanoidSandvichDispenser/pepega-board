@@ -1,12 +1,9 @@
-<div class="card">
-    <div class="post">
-        <div
-            class="body"
-        >
-            <p>
-                {{ $comment->content }}
-            </p>
-        </div>
+<x-base-card>
+    <p>
+        {{ $comment->content }}
+    </p>
+
+    <x-slot:footer>
         <div class="info">
             <i class="left">
                 @if ($comment->user == Auth::user())
@@ -35,40 +32,5 @@
                 @endif
             </span>
         </div>
-    </div>
-</div>
-
-@once
-@push('css')
-<style>
-.post {
-    display: flex;
-    flex-direction: column;
-    row-gap: 8px;
-}
-
-.post p.truncated {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.post p {
-    margin: 0;
-}
-
-.post .info {
-    display: flex;
-    color: var(--fg1);
-}
-
-.post .info > * {
-    flex-grow: 1;
-}
-
-.post .info .right {
-    text-align: right;
-}
-</style>
-@endpush
-@endonce
+    </x-slot:footer>
+</x-base-card>
