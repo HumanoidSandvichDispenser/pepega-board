@@ -11,7 +11,8 @@ class CommentCard extends Component
     public $comment;
     public $user;
 
-    public $with_reply_button = false;
+    public $showPost = false;
+    public $withReplyButton = false;
 
     public function mount()
     {

@@ -37,10 +37,20 @@
     row-gap: 8px;
 }
 
-.card-inner p.truncated {
+.card-inner .truncated {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.card-inner .body > .truncated {
+    max-height: 2rem;
+}
+
+.card-inner .body > * {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
 }
 
 .card-inner p {

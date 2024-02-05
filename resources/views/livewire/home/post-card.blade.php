@@ -11,13 +11,13 @@
         </h1>
     </x-slot:header>
 
-    <p
+    <div
         @if ($isPreview)
             class="truncated"
         @endif
     >
-        {{ $post->content }}
-    </p>
+        {!! Illuminate\Support\Str::markdown($post->content) !!}
+    </div>
 
     <x-slot:footer>
         <div class="info">

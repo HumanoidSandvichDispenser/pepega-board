@@ -35,16 +35,20 @@ if ($user != null) {
                 @if ($is_you)
                     <!-- display all threads/responses -->
                     @foreach ($post->threads as $thread)
-                        <livewire:comment-card
-                            :comment="$thread->comments->first()"
-                            with_reply_button
-                        />
+                        <div class="tw-px-4">
+                            <livewire:comment-card
+                                :comment="$thread->comments->first()"
+                                with-reply-button
+                            />
+                        </div>
                     @endforeach
                 @elseif ($thread != null)
-                    <livewire:comment-card
-                        :comment="$thread->comments->first()"
-                        with_reply_button
-                    />
+                    <div class="tw-px-4">
+                        <livewire:comment-card
+                            :comment="$thread->comments->first()"
+                            with-reply-button
+                        />
+                    </div>
                 @else
                     <div>
                         <livewire:viewpost.reply-form

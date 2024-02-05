@@ -3,8 +3,10 @@
         @forelse ($threads as $thread)
             <livewire:comment-card
                 :comment="$thread->comments->last()"
-                with_reply_button
-            />
+                show-post
+                with-reply-button
+            >
+            </livewire:comment-card>
         @empty
             <i>You have no unread threads at this time.</i>
         @endforelse

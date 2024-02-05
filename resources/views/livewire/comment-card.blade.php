@@ -1,4 +1,14 @@
 <x-base-card>
+    @if ($showPost)
+        <x-slot:header>
+            <h1>
+                <a href="/post/{{ $comment->thread->post->id }}">
+                    {{ $comment->thread->post->title }}
+                </a>
+            </h1>
+        </x-slot:header>
+    @endif
+
     <p>
         {{ $comment->content }}
     </p>
@@ -21,7 +31,7 @@
                 @endif
             </i>
             <span class="right">
-                @if ($with_reply_button)
+                @if ($withReplyButton)
                     <a href="/thread/{{ $comment->thread->id }}">
                         @if ($comment->thread->hasUserCommented($user))
                             View thread
