@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
-            $table->id();
-            $table->string('content');
-            $table->foreignId('user_id')->constrained();
-            $table->timestamps();
+        Schema::table('thread_user', function (Blueprint $table) {
+            $table->string('pseudonym')->nullable();
+            $table->boolean('is_ignored')->default(false);
         });
     }
 
@@ -24,6 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comments');
+        Schema::table('thread_user', function (Blueprint $table) {
+            $table->removeColumn('pseudonym');
+            $table->removeColumn('is_ignored');
+        });
     }
 };

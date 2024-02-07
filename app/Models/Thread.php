@@ -12,6 +12,8 @@ class Thread extends Model
 {
     use HasFactory;
 
+    public $table = 'threads';
+
     public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);
