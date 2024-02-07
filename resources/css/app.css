@@ -140,10 +140,17 @@ textarea {
     padding: 2em;
 }
 
-main {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 2rem;
+#content-column {
+    /*max-width: 720px;*/
+    width: 100%;
+    padding: 2rem 0;
+    justify-content: center;
+    gap: 1rem;
+}
+
+#content-column > main {
+    flex-basis: 720px;
+    flex-shrink: 1;
 }
 
 header#top-header {
