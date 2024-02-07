@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,8 @@ Route::view('/', 'home')
 
 Route::view('/post/{id}', 'viewpost')
     ->name('viewpost');
+
+Route::get('/@{username}', [UserController::class, 'show']);
 
 Route::view('/thread/{id}', 'viewthread')
     ->name('viewthread');

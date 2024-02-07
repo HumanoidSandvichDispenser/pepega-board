@@ -1,8 +1,4 @@
 <div class="post-list">
-    @auth
-        <livewire:home.submission-form>
-        </livewire:home.submission-form>
-    @endauth
     <div class="posts">
         @forelse ($posts as $post)
             <livewire:home.post-card :post="$post" is-preview>

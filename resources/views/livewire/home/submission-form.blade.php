@@ -10,6 +10,12 @@ use Livewire\Volt\Component;
 new class extends Component
 {
     public PostForm $form;
+    public string $redirectUrl;
+
+    public function mount()
+    {
+        $this->redirectUrl = request()->url();
+    }
 
     public function submitPost()
     {
@@ -23,7 +29,7 @@ new class extends Component
         Auth::user()->posts()->create($this->form->all());
 
         //$this->dispatch('post-created');
-        return $this->redirect('/');
+        return $this->redirect($this->redirectUrl);
     }
 }
 ?>
