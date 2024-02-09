@@ -20,4 +20,15 @@ class UserController extends Controller
             'publicPosts' => $publicPosts,
         ]);
     }
+
+    public function me()
+    {
+        $user = Auth::user();
+        if ($user == null) {
+            abort(404);
+        }
+
+        return redirect()
+            ->route('user.profile', ['username' => $user->username]);
+    }
 }

@@ -49,7 +49,7 @@
                             </a>
                         @endguest
                         @auth
-                            <a class="tw-text-inherit" href="/profile">
+                            <a class="tw-text-inherit" href="/me">
                                 {{ Auth::user()->display_name }}
                             </a>
                         @endauth

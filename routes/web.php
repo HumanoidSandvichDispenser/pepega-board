@@ -26,13 +26,14 @@ Route::view('/', 'home')
 Route::view('/post/{id}', 'viewpost')
     ->name('viewpost');
 
-Route::get('/@{username}', [UserController::class, 'show']);
+Route::get('/@{username}', [UserController::class, 'show'])
+    ->name('user.profile');
 
 Route::view('/thread/{id}', 'viewthread')
     ->name('viewthread');
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+Route::get('/me', [UserController::class, 'me'])
+    ->middleware('auth')
+    ->name('user.me');
 
 require __DIR__.'/auth.php';

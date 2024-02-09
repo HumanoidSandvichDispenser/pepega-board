@@ -11,6 +11,10 @@
     <div class="post-list tw-grow">
         @if ($user->id == $currentUser->id)
             <livewire:home.submission-form />
+            {{--
+              -- TODO: notify user about showing public posts only when they
+              -- recently submitted an anonymous post
+              --}}
         @endif
         <livewire:home.post-list :posts="$publicPosts" />
     </div>

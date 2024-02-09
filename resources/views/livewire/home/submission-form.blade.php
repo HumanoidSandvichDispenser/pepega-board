@@ -20,15 +20,9 @@ new class extends Component
     public function submitPost()
     {
         $this->validate();
-        //$validated = $this->validate([
-        //    'title' => ['required', 'string', 'max:255'],
-        //    'content' => ['required', 'string', 'max:4095'],
-        //    'is_anonymous' => ['required', 'boolean'],
-        //]);
 
         Auth::user()->posts()->create($this->form->all());
 
-        //$this->dispatch('post-created');
         return $this->redirect($this->redirectUrl);
     }
 }

@@ -18,7 +18,7 @@
     <x-slot:footer>
         <div class="info">
             <i class="left">
-                @if ($post->user == Auth::user())
+                @if ($this->belongsToUser)
                     You
                     @if ($post->is_anonymous)
                         (Anonymous)
